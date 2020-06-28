@@ -21,10 +21,22 @@
             "build-options": {
                 "env": {
                     "CFLAGS": "`pkg-config --cflags lv2`"
+                },
+                "arch": {
+                    "aarch64": {
+                        "env":{
+                            "NOOPT": "true"
+                        }
+                    },
+                    "arm": {
+                        "env": {
+                            "NOOPT": "true"
+                        }
+                    }
                 }
             },
             "build-commands": [
-                "make",
+                "make NOOPT=${NOOPT}",
                 "make install INSTALL_PATH=/app/extensions/Lv2Plugins/TAP/lv2"
             ],
             "post-install": [
